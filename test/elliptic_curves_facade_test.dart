@@ -45,5 +45,12 @@ void main() {
           "00000000000000000000100000000000000000000000000000000000000000000000"
           "00000000000000001"), somePoint);
     });
+
+
+    test('returns ECPoint from', () {
+      ECPoint cEC = facade.addPoint(G, G);
+      AffinePoint cAF = getSecp256k1().scalarBaseMul([2]);
+      expect(cEC, ECPoint.createPoint(cAF.X, cAF.Y));
+    });
   });
 }
