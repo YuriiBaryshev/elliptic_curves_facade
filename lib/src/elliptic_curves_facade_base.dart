@@ -18,4 +18,17 @@ class EllipticCurveFacade {
   ECPoint getG() {
     return ECPoint(curve.G.X, curve.G.Y);
   }
+
+  ///Adds two points
+  ECPoint addPoint(ECPoint a, ECPoint b) {
+    if(!isOnCurve(a) && !isOnCurve(b)) {
+      throw ArgumentError("ECCurveFacade: cannot add point from another curve");
+    }
+
+    AffinePoint c = curve.add(
+        AffinePoint.fromXY(a.x, a.y),
+        AffinePoint.fromXY(b.x, b.y)
+    );
+    return ECPoint(c.X, c.Y, curve.bitSize);
+  }
 }
