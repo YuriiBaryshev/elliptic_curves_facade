@@ -16,7 +16,7 @@ class EllipticCurveFacade {
 
   ///Returns G point of elliptic curve
   ECPoint getG() {
-    return ECPoint(curve.G.X, curve.G.Y);
+    return ECPoint(curve.G.X, curve.G.Y, curve.bitSize);
   }
 
   ///Adds two points
