@@ -1,4 +1,3 @@
-
 part of elliptic_curves_facade;
 
 /// Elliptic curves facade
