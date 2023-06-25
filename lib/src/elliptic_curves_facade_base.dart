@@ -14,4 +14,9 @@ class EllipticCurveFacade {
     return (point.y * point.y) % curve.p ==
         ((((point.x * point.x) % curve.p) * point.x + curve.a * point.x + curve.b) % curve.p);
   }
+
+  ///Returns G point of elliptic curve
+  ECPoint getG() {
+    return ECPoint(curve.G.X, curve.G.Y);
+  }
 }
