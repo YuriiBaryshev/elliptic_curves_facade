@@ -47,10 +47,22 @@ void main() {
     });
 
 
-    test('returns ECPoint from', () {
+    test('creates point for whatever reason', () {
       ECPoint cEC = facade.addPoint(G, G);
       AffinePoint cAF = getSecp256k1().scalarBaseMul([2]);
       expect(cEC, ECPoint.createPoint(cAF.X, cAF.Y));
+    });
+
+
+    test('multiply point for scalar', () {
+      AffinePoint cAF = getSecp256k1().scalarBaseMul([42]);
+      expect(facade.mulScalar(G, BigInt.from(42)), ECPoint.createPoint(cAF.X, cAF.Y));
+
+      cAF = getSecp256k1().scalarBaseMul([142]);
+      expect(facade.mulScalar(G, BigInt.from(142)), ECPoint.createPoint(cAF.X, cAF.Y));
+
+      cAF = getSecp256k1().scalarBaseMul([1, 1]);
+      expect(facade.mulScalar(G, BigInt.from(257)), ECPoint.createPoint(cAF.X, cAF.Y));
     });
   });
 }
