@@ -31,4 +31,17 @@ class EllipticCurveFacade {
     );
     return ECPoint(c.X, c.Y, curve.bitSize);
   }
+
+  ///Multiply to scalar
+  ECPoint mulScalar(ECPoint point, BigInt scalar) {
+    BigInt mask = BigInt.one << (scalar.bitLength - 2);
+    ECPoint intermediatePoint = point;
+    for(; mask != BigInt.zero; mask = mask >> 1) {
+      intermediatePoint = addPoint(intermediatePoint, intermediatePoint);
+      if((scalar & mask) != BigInt.zero) {
+        intermediatePoint = addPoint(intermediatePoint, point);
+      }
+    }
+    return intermediatePoint;
+  }
 }
