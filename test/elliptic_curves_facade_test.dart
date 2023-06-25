@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:elliptic_curves_facade/elliptic_curves_facade.dart';
 import 'package:elliptic/elliptic.dart';
 import 'package:test/test.dart';
