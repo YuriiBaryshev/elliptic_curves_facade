@@ -1,6 +1,10 @@
-// TODO: Put public facing types in this file.
+import 'package:elliptic/elliptic.dart';
 
-/// Checks if you are awesome. Spoiler: you are.
-class Awesome {
-  bool get isAwesome => true;
+/// Elliptic curves facade
+class EllipticCurveFacade {
+  late EllipticCurve curve;
+
+  EllipticCurveFacade(EllipticCurve? underlyingCurve) {
+    curve = underlyingCurve ?? getSecp256k1() as EllipticCurve;
+  }
 }
