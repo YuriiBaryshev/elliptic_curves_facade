@@ -1,3 +1,4 @@
+part of elliptic_curves_facade;
 ///Class for EC point implementation
 class ECPoint {
   late BigInt x, y;

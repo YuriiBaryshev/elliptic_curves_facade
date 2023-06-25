@@ -1,4 +1,5 @@
-import 'package:elliptic/elliptic.dart';
+
+part of elliptic_curves_facade;
 
 /// Elliptic curves facade
 class EllipticCurveFacade {
