@@ -49,4 +49,11 @@ class EllipticCurveFacade {
   }
 
   ///Double provided point
+  ECPoint doublePoint(ECPoint point) {
+    if(!isOnCurve(point)) {
+      throw ArgumentError("ECCurveFacade: cannot add point from another curve");
+    }
+
+    return addPoint(point, point);
+  }
 }
