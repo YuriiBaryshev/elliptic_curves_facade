@@ -17,9 +17,15 @@ void main() {
       expect(facade.curve.b, BigInt.from(7));
     });
 
+
     test('check whenever point is on curve', () {
       expect(facade.isOnCurve(somePoint), isFalse);
       expect(facade.isOnCurve(G), isTrue);
+    });
+
+
+    test('returns G', () {
+      expect(facade.getG(), G);
     });
   });
 }
