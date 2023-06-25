@@ -15,4 +15,10 @@ class ECPoint {
   ///Hash code override
   @override
   int get hashCode => Object.hash(x, y);
+
+  ///toString override
+  @override
+  String toString() {
+    return x.toRadixString(16) + y.toRadixString(16);
+  }
 }
