@@ -38,6 +38,14 @@ class ECPoint {
     return ECPoint(otherX, otherY, bitLength);
   }
 
+
+  ///Creates ECPoint on the basis of coordinates
+  ///for 256 bit length module of curve by default
+  static createPoint(BigInt otherX, BigInt otherY, [int bitLength = 256]) {
+    return ECPoint(otherX, otherY, bitLength);
+  }
+
+
   ///printPoint
   void printPoint() {
     print(this);
