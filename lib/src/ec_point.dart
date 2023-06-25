@@ -9,6 +9,7 @@ class ECPoint {
   ///Creates instance of a point with BigInt  and y coordinates
   ECPoint(this.x, this.y, [this.bitLength = 256]);
 
+
   ///Comparing operator
   @override
   operator ==(Object other) {
@@ -16,9 +17,11 @@ class ECPoint {
         && bitLength == other.bitLength;
   }
 
+
   ///Hash code override
   @override
   int get hashCode => Object.hash(x, y);
+
 
   ///toString override
   @override
@@ -26,10 +29,17 @@ class ECPoint {
     return x.toRadixString(16).padLeft(_hexLength, '0') + y.toRadixString(16).padLeft(_hexLength, '0');
   }
 
+
   ///from hex string
-  static ECPoint fromString(String pointHexString, [int bitLength = 256]) {
+  static ECPoint fromString(String pointHexString, [int? bitLength]) {
+    bitLength ??= pointHexString.length << 1; // *4 and /2
     BigInt otherX = BigInt.parse(pointHexString.substring(0, bitLength >> 2), radix: 16);
     BigInt otherY = BigInt.parse(pointHexString.substring(bitLength >> 2), radix: 16);
     return ECPoint(otherX, otherY, bitLength);
+  }
+
+  ///printPoint
+  void printPoint() {
+    print(this);
   }
 }
