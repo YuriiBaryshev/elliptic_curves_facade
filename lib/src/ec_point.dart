@@ -25,4 +25,11 @@ class ECPoint {
   String toString() {
     return x.toRadixString(16).padLeft(_hexLength, '0') + y.toRadixString(16).padLeft(_hexLength, '0');
   }
+
+  ///from hex string
+  static ECPoint fromString(String pointHexString, [int bitLength = 256]) {
+    BigInt otherX = BigInt.parse(pointHexString.substring(0, bitLength >> 2), radix: 16);
+    BigInt otherY = BigInt.parse(pointHexString.substring(bitLength >> 2), radix: 16);
+    return ECPoint(otherX, otherY, bitLength);
+  }
 }
