@@ -25,5 +25,12 @@ void main() {
     test('returns G', () {
       expect(facade.getG(), G);
     });
+
+
+    test('returns ECPoint toString', () {
+      expect(G.toString(), "79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f"
+          "2815b16f81798483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08"
+          "ffb10d4b8");
+    });
   });
 }
