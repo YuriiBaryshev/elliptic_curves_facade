@@ -34,6 +34,9 @@ class EllipticCurveFacade {
 
   ///Multiply to scalar
   ECPoint mulScalar(ECPoint point, BigInt scalar) {
+    if(!isOnCurve(point)) {
+      throw ArgumentError("ECCurveFacade: cannot add point from another curve");
+    }
     BigInt mask = BigInt.one << (scalar.bitLength - 2);
     ECPoint intermediatePoint = point;
     for(; mask != BigInt.zero; mask = mask >> 1) {
@@ -44,4 +47,6 @@ class EllipticCurveFacade {
     }
     return intermediatePoint;
   }
+
+  ///Double provided point
 }
